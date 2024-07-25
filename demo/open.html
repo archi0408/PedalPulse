@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PedalPulse - Database-Driven Bikes Platform</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
+        }
+
+        section {
+            background-color: #222;
+            color: #fff;
+            padding: 1em;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        p {
+            color: #ccc; 
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff3333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+       
+        .login-form {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center; 
+            display: none; 
+        }
+
+        .login-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-form input[type="submit"]:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <nav>
+            <ul>
+                <li><a href="./find_bikes.html">FIND YOUR BIKE</a></li>
+                <li><a href="#products">PRODUCTS</a></li>
+                <li><a href="#about-us">ABOUT US</a></li>
+                <li><a href="#stories">STORIES</a></li>
+                <li><a href="#support">SUPPORT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <section id="find-bike">
+        
+        <image src="./Bike.jpg" style="width: 100vw; height: 100vh; object-fit: cover; border: none;"></image>
+    </section>
+    <section id="products">
+       
+        <h2>Check out our latest products:</h2>
+        <button onclick="openProductsPage()">Products</button>
+    </section>
+    
+    <script>
+        function openProductsPage() {
+            
+            window.location.href = "bikesproducts.html";
+        }
+    </script>
+    <section id="about">
+       
+        <h2>Learn more about us:</h2>
+        <button onclick="openAboutPage()">About</button>
+    </section>
+    
+    <script>
+        function openAboutPage() {
+            
+            window.location.href = "about.html";
+        }
+    </script>
+<section id="support">
+   
+    <h2>Need assistance? Contact support:</h2>
+    <button onclick="openSupportPage()">Support</button>
+</section>
+
+<script>
+    function openSupportPage() {
+        
+        window.location.href = "support.html";
+    }
+</script>
+<section id="stories">
+    
+    <h2>Explore our latest stories:</h2>
+    <button onclick="openStoriesPage()">Read Stories</button>
+</section>
+
+<script>
+    function openStoriesPage() {
+        
+        window.location.href = "stories.html";
+    }
+</script>
+
+<body>
+    <h1>Project Overview</h1>
+    <p>This is the project overview page.</p>
+
+    <button onclick="openProjectOverview()">Go to Project Overview Page</button>
+
+    <script>
+        function openProjectOverview() {
+            
+            window.location.href = "projectoverview.html";
+        }
+    </script>
+   
+
+<body>
+    <h1>Welcome to the Data Page</h1>
+    <button id="dataButton">Go to Data Page</button>
+
+    <script>
+       
+        function openDataPage() {
+            
+            window.location.href = "data.html";
+        }
+
+        
+        document.getElementById("dataButton").addEventListener("click", openDataPage);
+    </script>
+
+<section id="checkout">
+    <h2>Ready to checkout?</h2>
+    <button onclick="openElementsPage()">Checkout</button>
+</section>
+
+<script>
+    function openElementsPage() {
+        // Change the file path to the desired file
+        window.location.href = "elements.html";
+    }
+</script>
+
+
+</body>
+</html>
+

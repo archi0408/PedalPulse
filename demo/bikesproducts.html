@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PedalPulse - Database Integration Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2em;
+        }
+
+        section {
+            background-color: #222;
+            color: #fff;
+            padding: 1em;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-weight: bold;
+            margin-top: 0;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #fff;
+        }
+
+        p {
+            color: #ccc;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #ff3333;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            clear: both;
+        }
+
+        .bike-columns {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .bike-column {
+            flex-basis: 30%;
+        }
+
+        .bike-link {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center items horizontally */
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bike-link:hover {
+            background-color: #555;
+        }
+
+        .bike-link img {
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover;
+        }
+
+        .buy-buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+            justify-content: center; /* Center buttons horizontally */
+            margin-top: 10px; /* Spacing above buttons */
+            width: 100%; /* Ensure full width */
+        }
+
+        .buy-buttons a {
+            color: #fff;
+            background-color: #ff0000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 5px;
+            text-decoration: none;
+        }
+
+        .buy-buttons a:hover {
+            background-color: #ff3333;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- Header content can be added here if needed -->
+</header>
+
+<main>
+    <section id="products">
+        <h1>PRODUCTS</h1>
+        <ul>
+            <li><a href="#mountain-bike">Mountain Bikes</a></li>
+            <li><a href="#road-bike">Road Bikes</a></li>
+            <li><a href="#e-bike">E-Bikes</a></li>
+            <li><a href="#gravel-bike">Gravel Bikes</a></li>
+        </ul>
+    </section>
+
+    <section id="mountain-bike">
+        <h2>Mountain Bike</h2>
+        <div class="bike-link">
+            <img class="bike-image" src="./mountain bike.jpg" alt="Mountain Bike Image">
+            <p>Price: $1,200</p>
+            <div class="buy-buttons">
+                <a href="#">Add to Cart</a>
+                <a href="#">Buy Now</a>
+                <a href="#">Add to Wishlist</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="road-bike">
+        <h2>Road Bike</h2>
+        <div class="bike-link">
+            <img class="bike-image" src="./road bike.jpg" alt="Road Bike Image">
+            <p>Price: $1,000</p>
+            <div class="buy-buttons">
+                <a href="#">Add to Cart</a>
+                <a href="#">Buy Now</a>
+                <a href="#">Add to Wishlist</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="e-bike">
+        <h2>E-Bike</h2>
+        <div class="bike-link">
+            <img class="bike-image" src="./e.jpg" alt="E-Bike Image">
+            <p>Price: $1,500</p>
+            <div class="buy-buttons">
+                <a href="#">Add to Cart</a>
+                <a href="#">Buy Now</a>
+                <a href="#">Add to Wishlist</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gravel-bike">
+        <h2>Gravel Bike</h2>
+        <div class="bike-link">
+            <img class="bike-image" src="./gravel bike.jpg" alt="Gravel Bike Image">
+            <p>Price: $1,300</p>
+            <div class="buy-buttons">
+                <a href="#">Add to Cart</a>
+                <a href="#">Buy Now</a>
+                <a href="#">Add to Wishlist</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <!-- Footer content can be added here if needed -->
+</footer>
+
+</body>
+</html>
