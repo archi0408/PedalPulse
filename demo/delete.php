@@ -1,29 +1,9 @@
 <?php
-if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-    include 'config.php';
+include 'db.php';
 
-    $sql = "DELETE FROM employees WHERE id = ?";
-    if($stmt = $conn->prepare($sql)){
-        $stmt->bind_param("i", $param_id);
-
-        $param_id = trim($_GET["id"]);
-
-        if($stmt->execute()){
-            header("location: index.php");
-            exit();
-        } else{
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-    }
-
-    $stmt->close();
-    $conn->close();
-} else{
-    if(empty(trim($_GET["id"]))){
-        header("location: error.php");
-        exit();
-    }
-}
+// Fetch all bikes to display
+$stmt = $pdo->query("SELECT * FROM bikes");
+$bikes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -31,66 +11,129 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Record</title>
+    <title>Bike List</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Basic Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-        }
-        .container {
-            width: 50%;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
             color: #333;
+            line-height: 1.6;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
         }
-        p {
-            color: #555;
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        input[type="submit"], a {
-            padding: 10px;
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .bike {
+            border: 1px solid #ddd;
             margin: 10px;
-            border: none;
-            border-radius: 5px;
+            padding: 10px;
+            display: inline-block;
+            text-align: center;
+            width: calc(33.333% - 20px); /* Adjusts the width to fit three items per row */
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .bike img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .bike h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .bike p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .bike a {
             text-decoration: none;
-            cursor: pointer;
+            color: #007BFF;
+            font-weight: bold;
         }
-        input[type="submit"] {
-            background-color: #d9534f;
+
+        .bike a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #333;
             color: #fff;
+            margin-top: 20px;
         }
-        input[type="submit"]:hover {
-            background-color: #c9302c;
-        }
-        a {
-            background-color: #5bc0de;
-            color: #fff;
-        }
-        a:hover {
-            background-color: #31b0d5;
+
+        .notification {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Delete Record</h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-            <p>Are you sure you want to delete this record?</p>
-            <input type="submit" value="Yes">
-            <a href="index.php">No</a>
-        </form>
-    </div>
+<header>
+    <h1>Bikes List</h1>
+</header>
+
+<main>
+    <?php
+    // Display a notification if the delete operation was successful
+    if (isset($_GET['deleted']) && $_GET['deleted'] == 'true') {
+        echo '<div class="notification">Bike deleted successfully.</div>';
+    }
+    ?>
+
+    <?php if (count($bikes) > 0): ?>
+        <?php foreach ($bikes as $bike): ?>
+            <div class="bike">
+                <h2><?php echo htmlspecialchars($bike['name']); ?></h2>
+                <img src="<?php echo htmlspecialchars($bike['image']); ?>" alt="<?php echo htmlspecialchars($bike['name']); ?>">
+                <p>Price: $<?php echo number_format($bike['price'], 2); ?></p>
+                <a href="edit.php?id=<?php echo $bike['id']; ?>">Edit</a>
+                <br>
+                <a href="delete.php?id=<?php echo $bike['id']; ?>" onclick="return confirm('Are you sure you want to delete this bike?');">Delete</a>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p>No bikes found.</p>
+    <?php endif; ?>
+</main>
+
+<footer>
+    <p>&copy; 2024 Your Company</p>
+</footer>
 </body>
 </html>
